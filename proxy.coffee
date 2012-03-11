@@ -6,7 +6,7 @@ app.use express.bodyParser()
 
 app.post '/', (proxyRequest, proxyResponse) ->
   request proxyRequest.body.url, (error, apiResponse, apiBody) ->
-    proxyResponse.json
+    proxyResponse.send
       "headers": apiResponse.headers
       "body": JSON.parse apiBody
 
