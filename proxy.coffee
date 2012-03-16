@@ -6,6 +6,7 @@ app.use express.bodyParser()
 
 app.post '/', (proxyRequest, proxyResponse) ->
   request proxyRequest.body.url, (error, apiResponse, apiBody) ->
+    return proxyResponse.send error if error?
     try
       proxyResponse.send
         "headers": apiResponse.headers
